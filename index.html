@@ -42,7 +42,7 @@
   }
 
   /* ====================================================
-     2) TUNGI OSMON — yulduzlar va oy (matn/rang bilan chalg'itmaydigan, sokin fon)
+     2) TUNGI OSMON — yulduzlar va oy
      ==================================================== */
   .sky{
     position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0;
@@ -61,7 +61,7 @@
   }
 
   /* ====================================================
-     3) OSMON JISMLARI — Oy, Saturn, Yer (SVG, yumshoq nurlanish bilan)
+     3) OSMON JISMLARI — Oy, Saturn, Yer
      ==================================================== */
   .celestial{
     position: fixed;
@@ -112,7 +112,7 @@
   }
 
   /* ====================================================
-     3) SHISHASIMON (GLASSMORPHISM) KARTOCHKA — qora fonga mos, sokin
+     4) SHISHASIMON (GLASSMORPHISM) KARTOCHKA
      ==================================================== */
   .card{
     position:relative;
@@ -133,13 +133,6 @@
     to  { opacity:1; transform: translateY(0);}
   }
 
-  .eyebrow{
-    letter-spacing: 4px;
-    font-size: 11px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
-
   h1{
     font-family:'Playfair Display', serif;
     font-weight: 500;
@@ -150,7 +143,7 @@
   }
 
   /* ====================================================
-     4) SANOQ (COUNTDOWN) — asosiy e'tibor shu yerga qaratiladi
+     5) SANOQ (COUNTDOWN)
      ==================================================== */
   .countdown{
     display:flex;
@@ -194,7 +187,7 @@
   }
 
   /* ====================================================
-     5) SOVG'A QUTISI — oltin chiziqli, minimal, ortiqcha bezaksiz
+     6) SOVG'A QUTISI
      ==================================================== */
   .gift-wrap{
     margin: 10px auto 4px;
@@ -254,7 +247,7 @@
   }
 
   /* ====================================================
-     6) OCHILGANDAN KEYINGI HOLAT — butunlay qora, faqat matn
+     7) OCHILGANDAN KEYINGI TABRIK SAHIFASI
      ==================================================== */
   .reveal{
     position: fixed;
@@ -296,7 +289,7 @@
   }
 
   /* ====================================================
-     7) "TOVUSHNI YOQISH" TUGMASI
+     8) INTERFEYS TUGMALARI
      ==================================================== */
   .sound-btn{
     position: fixed;
@@ -372,14 +365,14 @@
     </svg>
   </div>
 
-  <p class="hint" id="hintText">Vaqti kelganda quti tovlanadi</p>
+  <p class="hint" id="hintText">Vaqti kelsa, o'zi ochiladi/p>
 </main>
 
 <!-- To'liq ekranli tabrik matni sahifasi -->
 <div class="reveal" id="revealPage">
   <p class="reveal-text">
-    <span class="accent">22-iyul.</span><br>
-    Salom. Qalesiz. Uzr yana bezovta qildim. Shunchaki tabriklamoqchiydim. Ozgina xursand qilgim keldi sizni. Siz men uchratgan eng yahshi va eng mehribon qizsiz. Siz orqali sevilish qanday ekanligini bildim. Agar taqdir bo'lsa, bo'ladi ham. Keyingi yil albatta oldizga borib, sizdan rozilik so'rash uchun boraman. Meni o'ylantirib turgan narsa va to'sadigan narsa ham desam bo'ladi. Meni o'zimdagi kasallik. Balki bu haqida izlangandursiz, bilmayman. Lekin harakat qilib ko'raman. Nega aynan sizni tanlayabman. Chunki siz orqali motivatsiya va mehr olib, hayotimni o'nglamoqchiman. Sizni men bilan xursand bo'lishizni xohlayman. Ha, oldizda siz o'ylarsiz menga nisbatan e'tiborsiz deb, lekin kulishlarizni, talpinishlarizni sezib bo'lganman.Tug'ilgan kuniz bilan va yana bir pogona osishiz bilan tabriklayman. O'zligizdagi shiddat motivatsiya organishga bolgan ehtiyojiz hech qachon sonmasin. Bu go'zal kunni go'zal yuzlarizdagi tabassum bilan kutib oling hop.
+    <span class="accent">Bugun sizni kuniz, Sizni kuniz bugun!</span><br>
+    Salom. Qalesiz. Uzr yana bezovta qildim. Shunchaki tabriklamoqchiydim. Ozgina xursand qilgim keldi sizni. Siz men uchratgan eng yahshi va eng mehribon qizsiz. Siz orqali sevilish qanday ekanligini bildim. Agar taqdir bo'lsa, bo'ladi ham. Keyingi yil albatta oldizga borib, sizdan rozilik so'rash uchun boraman. Meni o'ylantirib turgan narsa va to'sadigan narsa ham desam bo'ladi. Meni o'zimdagi kasallik. Balki bu haqida izlangandursiz, bilmayman. Lekin harakat qilib ko'raman. Nega aynan sizni tanlayabman. Chunki siz orqali motivatsiya va mehr olib, hayotimni o'nglamoqchiman. Sizni men bilan xursand bo'lishizni xohlayman. Ha, oldizda siz o'ylarsiz menga nisbatan e'tiborsiz deb, lekin kulishlarizni, talpinishlarizni sezib bo'lganman.Tug'ilgan kuniz bilan va yana bir pogona osishiz bilan tabriklayman. O'zligizdagi shiddat motivatsiya organishga bolgan ehtiyojiz hech qachon sonmasin. Bu go'zal kunni go'zal yuzlarizdagi tabassum bilan kutib oling hop. SIZNI SIZ YAHSHI KO'RMASEZ HAM, YAHSHI KO'RADIGAN ODAM!
   </p>
 </div>
 
@@ -402,9 +395,9 @@
 
 <script>
 /* =======================================================
-   SOZLAMALAR: maqsadli sana va vaqt (22-Iyul)
+   SOZLAMALAR: maqsadli sana va vaqt
    ======================================================= */
-const TARGET_DATE = new Date(2026, 6, 20, 18, 35, 0); 
+const TARGET_DATE = new Date(2026, 6, 22, 0, 0, 0); 
 
 const giftBox      = document.getElementById('giftBox');
 const hintText     = document.getElementById('hintText');
@@ -424,16 +417,16 @@ const cdMins  = document.getElementById('cd-mins');
 const cdSecs  = document.getElementById('cd-secs');
 
 /* -------------------------------------------------------
-   1) SANOQNI YANGILAB TURISH (To'g'irlangan va aniq variant)
+   1) SANOQNI YANGILAB TURISH
    ------------------------------------------------------- */
 function updateCountdown(){
   const now = new Date();
   const diff = TARGET_DATE - now;
   const totalSeconds = Math.floor(diff / 1000);
 
-  // Vaqt to'liq tugaganda (Soniya 0 yoki undan kam bo'lsa)
+  // Vaqt to'liq tugaganda
   if (totalSeconds <= 0){
-    clearInterval(countdownTimer); // Chiqillash va hisoblash intervalini darhol to'xtatamiz
+    clearInterval(countdownTimer); 
     cdDays.textContent = cdHours.textContent = cdMins.textContent = cdSecs.textContent = '00';
     countdownEl.classList.remove('urgent');
     
@@ -441,19 +434,11 @@ function updateCountdown(){
       unlocked = true;
       giftBox.classList.remove('locked');
       giftBox.classList.add('unlocked');
-      hintText.textContent = "Vaqti keldi. Qutini bosing";
+      hintText.textContent = "Vaqti keldi😁";
     }
     return;
   }
-  function playTick(){
-  // Agar vaqt kelgan bo'lsa (unlocked === true), funksiya hech narsa qilmaydi
-  if (!audioUnlocked || unlocked) return; 
-  try{
-    tickSound.currentTime = 0;
-    tickSound.volume = 0.35;
-    tickSound.play().catch(() => {});
-  } catch(e){}
-}
+
   const days  = Math.floor(totalSeconds / 86400);
   const hours = Math.floor((totalSeconds % 86400) / 3600);
   const mins  = Math.floor((totalSeconds % 3600) / 60);
@@ -472,10 +457,16 @@ function updateCountdown(){
 }
 
 /* -------------------------------------------------------
-   1.1) SOAT TIK TOVUSHI
+   1.1) SOAT TIK TOVUSHI (Kechikish va 00 da chalinish muammosi hal etildi)
    ------------------------------------------------------- */
 function playTick(){
   if (!audioUnlocked || unlocked) return;
+  
+  // Agarda tugashiga 1 soniya yoki undan kam qolgan bo'lsa, chiqillashni bloklaymiz
+  const now = new Date();
+  const diff = TARGET_DATE - now;
+  if (Math.floor(diff / 1000) <= 0) return;
+
   try{
     tickSound.currentTime = 0;
     tickSound.volume = 0.35;
@@ -492,13 +483,28 @@ document.addEventListener('click', unlockAudioOnFirstInteraction, { once: true }
 document.addEventListener('touchstart', unlockAudioOnFirstInteraction, { once: true });
 document.addEventListener('keydown', unlockAudioOnFirstInteraction, { once: true });
 
-// Har soniyada ishlaydigan taymer
+// Har soniyada hisoblaydigan va ovoz chiqaradigan asosiy interval
 updateCountdown();
 const countdownTimer = setInterval(() => {
-  updateCountdown();
-  if (!unlocked) {
-    playTick();
+  const now = new Date();
+  const diff = TARGET_DATE - now;
+  const totalSeconds = Math.floor(diff / 1000);
+
+  if (totalSeconds <= 0) {
+    unlocked = true;
+    clearInterval(countdownTimer); 
+    
+    cdDays.textContent = cdHours.textContent = cdMins.textContent = cdSecs.textContent = '00';
+    countdownEl.classList.remove('urgent');
+    
+    giftBox.classList.remove('locked');
+    giftBox.classList.add('unlocked');
+    hintText.textContent = "Vaqti keldi. Qutini bosing";
+    return;
   }
+
+  updateCountdown();
+  playTick();
 }, 1000);
 
 /* -------------------------------------------------------
