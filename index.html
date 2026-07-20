@@ -68,15 +68,9 @@
     z-index: 0;
     pointer-events: none;
     animation: drift 14s ease-in-out infinite alternate;
-    /* Muhim: faqat width beriladi, height "auto" — shu bilan rasm
-       o'z tabiiy proporsiyasida qoladi, cho'zilib ketmaydi. */
     height: auto;
     display: block;
     object-fit: contain;
-    /* Rasmning to'rtburchak chegarasi ko'rinib qolmasligi uchun:
-       markazi to'liq ko'rinadi, chetlariga borgan sari asta-sekin
-       shaffoflashib, fonga singib ketadi. Bu rasmning o'zi qanday
-       fonli bo'lishidan qat'i nazar ishlaydi (qora, oq, farqi yo'q). */
     -webkit-mask-image: radial-gradient(circle, #000 48%, transparent 72%);
     mask-image: radial-gradient(circle, #000 48%, transparent 72%);
   }
@@ -187,7 +181,6 @@
     display:block;
   }
 
-  /* Oxirgi 1 daqiqada — raqamlar qizg'ish tusga o'tib, tezroq "urayotgandek" pulslanadi */
   .countdown.urgent .num{
     color: #ff6b6b;
     animation: urgentPulse 0.6s ease-in-out infinite;
@@ -276,7 +269,7 @@
     transition: opacity 1s ease;
     padding: 90px 40px 60px;
     text-align:center;
-    overflow-y: auto;        /* matn uzun bo'lsa, pastga aylantirish mumkin */
+    overflow-y: auto;        
     -webkit-overflow-scrolling: touch;
   }
   .reveal.show{
@@ -303,9 +296,7 @@
   }
 
   /* ====================================================
-     7) "TOVUSHNI YOQISH" TUGMASI — brauzer avtomatik ijro
-        etishni bloklaydi, shuning uchun foydalanuvchi bir marta
-        bosishi kerak. Bosilgach kutish musiqasi boshlanadi.
+     7) "TOVUSHNI YOQISH" TUGMASI
      ==================================================== */
   .sound-btn{
     position: fixed;
@@ -329,7 +320,6 @@
   .sound-btn:hover{ color: var(--gold); border-color: var(--gold); }
   .sound-btn.playing{ color: var(--gold); border-color: rgba(216,184,119,0.4); }
 
-  /* "Ekranga teging" eslatmasi — birinchi bosishgacha ko'rinadi, keyin yo'qoladi */
   .tap-hint{
     position: fixed;
     top: 62px;
@@ -352,36 +342,13 @@
 </head>
 <body>
 
-<!-- Tungi osmon: yulduzlar (dekorativ) -->
+<!-- Tungi osmon: yulduzlar -->
 <div class="sky" aria-hidden="true" id="sky"></div>
 
-<!-- ====================================================
-     OSMON JISMLARI — o'z rasmlaringiz bilan almashtiring
-     ====================================================
-     Fayllarni shu HTML bilan bir papkaga joylashtiring:
-       moon.jpg, saturn.jpg, earth.jpg
-
-     Chiroyli chiqishi uchun tavsiyalar:
-     1) Diqqat: .jpg formati shaffoflikni (transparent background) qo'llab-
-        quvvatlamaydi — fon har doim to'liq rangli (masalan oq yoki
-        boshqa rang) bo'lib chiqadi. Eng yaxshi natija uchun rasmning
-        o'zi allaqachon QORA fonli bo'lishi kerak (masalan, kosmosdan
-        olingan rasm, qora fonli render va h.k.), aks holda rasm
-        atrofida to'rtburchak "quti" ko'rinib qoladi. Agar rasmingiz
-        boshqa fonli bo'lsa, uni biror vositada (masalan remove.bg)
-        fonini olib tashlab, .png qilib saqlashni tavsiya qilaman.
-     2) O'lcham: taxminan 400–800px kenglik yetarli. Judayam kichik
-        (masalan 60px) rasm bulg'anib (piksellanib) ko'rinadi;
-        judayam katta (3000px+) rasm esa sahifani sekinlashtiradi.
-     3) Rasm kvadratga yaqin proporsiyada bo'lsa (Oy, Yer uchun)
-        yoki Saturn kabi halqali bo'lsa kenroq (masalan 3:2) bo'lsa,
-        eng tabiiy ko'rinadi — CSS avtomatik moslab, cho'zib
-        yubormaydi (faqat "width" beriladi, "height" o'zi hisoblanadi).
-     ==================================================== -->
+<!-- OSMON JISMLARI -->
 <img class="celestial moon"   src="moon.jpg"   alt="" aria-hidden="true">
 <img class="celestial saturn" src="saturn.jpg" alt="" aria-hidden="true">
 <img class="celestial earth"  src="earth.jpg"  alt="" aria-hidden="true">
-
 
 <main class="card" id="mainCard">
   <h1>22-iyul</h1>
@@ -394,7 +361,7 @@
     <div class="unit"><span class="num" id="cd-secs">00</span><span class="label">soniya</span></div>
   </div>
 
-  <!-- Sovg'a qutisi (bosiladigan, minimal chiziqli SVG) -->
+  <!-- Sovg'a qutisi -->
   <div class="gift-wrap locked" id="giftBox" role="button" tabindex="0" aria-label="Ochish">
     <svg viewBox="0 0 160 160">
       <rect x="30" y="78" width="100" height="62" rx="6"/>
@@ -408,61 +375,48 @@
   <p class="hint" id="hintText">Vaqti kelganda quti tovlanadi</p>
 </main>
 
-<!-- Quti ochilgach chiqadigan to'liq ekranli qora sahifa — faqat matn -->
+<!-- To'liq ekranli tabrik matni sahifasi -->
 <div class="reveal" id="revealPage">
   <p class="reveal-text">
     <span class="accent">22-iyul.</span><br>
-    <!-- Pastdagi qatorni o'zingiz xohlagan tilak matniga almashtiring -->
-    Salom. Qalesiz. Uzr yana bezovta qildim. Shunchaki tabriklamoqchiydim. Ozgina xursand qilgim keldi
-    sizni. Siz men uchratgan eng yahshi va eng mehribon qizsiz. Siz orqali sevilish qanday ekanligini bildim.
-    Agar taqdir bo'lsa, bo'ladi ham. Keyingi yil albatta oldizga borib, sizdan rozilik so'rash uchun boraman.
-    Meni o'ylantirib turgan narsa va to'sadigan narsa ham desam bo'ladi. Meni o'zimdagi kasallik. Balki bu haqida 
-    izlangandursiz, bilmayman. Lekin harakat qilib ko'raman. Nega aynan sizni tanlayabman. Chunki siz orqali motivatsiya va mehr
-    olib, hayotimni o'nglamoqchiman. Sizni men bilan xursand bo'lishizni xohlayman. Ha, oldizda siz o'ylarsiz menga nisbatan e'tiborsiz
-    deb, lekin kulishlarizni, talpinishlarizni sezib bo'lganman.Tug'ilgan kuniz bilan va yana bir pogona osishiz bilan tabriklayman. O'zligizdagi 
-    shiddat motivatsiya organishga bolgan ehtiyojiz hech qachon sonmasin. Bu go'zal kunni go'zal yuzlarizdagi tabassum bilan kutib oling hop.
-      </p>
+    Salom. Qalesiz. Uzr yana bezovta qildim. Shunchaki tabriklamoqchiydim. Ozgina xursand qilgim keldi sizni. Siz men uchratgan eng yahshi va eng mehribon qizsiz. Siz orqali sevilish qanday ekanligini bildim. Agar taqdir bo'lsa, bo'ladi ham. Keyingi yil albatta oldizga borib, sizdan rozilik so'rash uchun boraman. Meni o'ylantirib turgan narsa va to'sadigan narsa ham desam bo'ladi. Meni o'zimdagi kasallik. Balki bu haqida izlangandursiz, bilmayman. Lekin harakat qilib ko'raman. Nega aynan sizni tanlayabman. Chunki siz orqali motivatsiya va mehr olib, hayotimni o'nglamoqchiman. Sizni men bilan xursand bo'lishizni xohlayman. Ha, oldizda siz o'ylarsiz menga nisbatan e'tiborsiz deb, lekin kulishlarizni, talpinishlarizni sezib bo'lganman.Tug'ilgan kuniz bilan va yana bir pogona osishiz bilan tabriklayman. O'zligizdagi shiddat motivatsiya organishga bolgan ehtiyojiz hech qachon sonmasin. Bu go'zal kunni go'zal yuzlarizdagi tabassum bilan kutib oling hop.
+  </p>
 </div>
 
-<!-- Tovushni yoqish tugmasi (brauzer avtomatik ijroni bloklagani uchun kerak) -->
+<!-- Tovush tugmasi -->
 <button class="sound-btn" id="soundBtn" type="button">♪ Musiqa</button>
 <p class="tap-hint" id="tapHint">Ovozlar uchun ekranga teging</p>
 
-<!-- 1) KUTISH MUSIQASI — 22-iyulgacha fonda tinch jaranglaydi.
-        O'z audio faylingiz manzilini "src" ga qo'ying. -->
+<!-- AUDIOLAR -->
 <audio id="waitingMusic" loop preload="none">
   <source src="waiting-music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 2) ROMANTIK MUSIQA — quti ochilgandan keyin, kutish musiqasi o'rniga yangraydi. -->
 <audio id="bgMusic" loop preload="none">
   <source src="romantic-music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 3) TIK TOVUSHI — har soniyada sanoq bilan birga yangraydi.
-        Qisqa (~1 soniyalik) audio fayl kerak. -->
 <audio id="tickSound" preload="auto">
   <source src="tick.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 /* =======================================================
-   SOZLAMALAR: sovg'a ochiladigan sana va vaqt
+   SOZLAMALAR: maqsadli sana va vaqt (22-Iyul)
    ======================================================= */
-// Diqqat: oy raqami 0 dan boshlanadi, shuning uchun iyul = 6
-const TARGET_DATE = new Date(2026, 6, 20, 18, 20, 0); // 20-iyul, soat 12:30
+const TARGET_DATE = new Date(2026, 6, 20, 18, 35, 0); 
 
 const giftBox      = document.getElementById('giftBox');
 const hintText     = document.getElementById('hintText');
 const revealPage   = document.getElementById('revealPage');
-const bgMusic      = document.getElementById('bgMusic');       // romantik musiqa (ochilgach)
-const waitingMusic = document.getElementById('waitingMusic');  // kutish musiqasi (22-iyulgacha)
-const tickSound    = document.getElementById('tickSound');     // soat "tik" tovushi
+const bgMusic      = document.getElementById('bgMusic');       
+const waitingMusic = document.getElementById('waitingMusic');  
+const tickSound    = document.getElementById('tickSound');     
 const soundBtn     = document.getElementById('soundBtn');
 const countdownEl  = document.getElementById('countdown');
 
-let audioUnlocked = false; // sahifada birinchi bosishdan keyin true bo'ladi (tik tovushi mustaqil ishlashi uchun)
-let unlocked = false; // vaqt kelganda true bo'ladi
+let audioUnlocked = false; 
+let unlocked = false; 
 
 const cdDays  = document.getElementById('cd-days');
 const cdHours = document.getElementById('cd-hours');
@@ -470,15 +424,19 @@ const cdMins  = document.getElementById('cd-mins');
 const cdSecs  = document.getElementById('cd-secs');
 
 /* -------------------------------------------------------
-   1) SANOQNI YANGILAB TURISH (har soniyada)
+   1) SANOQNI YANGILAB TURISH (To'g'irlangan va aniq variant)
    ------------------------------------------------------- */
 function updateCountdown(){
   const now = new Date();
   const diff = TARGET_DATE - now;
+  const totalSeconds = Math.floor(diff / 1000);
 
-  if (diff <= 0){
+  // Vaqt to'liq tugaganda (Soniya 0 yoki undan kam bo'lsa)
+  if (totalSeconds <= 0){
+    clearInterval(countdownTimer); // Chiqillash va hisoblash intervalini darhol to'xtatamiz
     cdDays.textContent = cdHours.textContent = cdMins.textContent = cdSecs.textContent = '00';
     countdownEl.classList.remove('urgent');
+    
     if (!unlocked){
       unlocked = true;
       giftBox.classList.remove('locked');
@@ -488,7 +446,6 @@ function updateCountdown(){
     return;
   }
 
-  const totalSeconds = Math.floor(diff / 1000);
   const days  = Math.floor(totalSeconds / 86400);
   const hours = Math.floor((totalSeconds % 86400) / 3600);
   const mins  = Math.floor((totalSeconds % 3600) / 60);
@@ -507,20 +464,17 @@ function updateCountdown(){
 }
 
 /* -------------------------------------------------------
-   1.1) SOAT "TIK" TOVUSHI — har soniyada bir marta
+   1.1) SOAT TIK TOVUSHI
    ------------------------------------------------------- */
 function playTick(){
-  if (!audioUnlocked) return;
+  if (!audioUnlocked || unlocked) return;
   try{
     tickSound.currentTime = 0;
     tickSound.volume = 0.35;
     tickSound.play().catch(() => {});
-  } catch(e){ /* jimgina o'tkazib yuboramiz */ }
+  } catch(e){}
 }
 
-// Sahifada QAYERGA bo'lmasin birinchi marta bosilishi (yoki teginilishi) bilan
-// audio "qulfi" ochiladi — bu musiqa tugmasidan mustaqil, shuning uchun tik
-// tovushi ishlashi uchun foydalanuvchi musiqani yoqishi shart emas.
 function unlockAudioOnFirstInteraction(){
   audioUnlocked = true;
   const tapHint = document.getElementById('tapHint');
@@ -530,15 +484,17 @@ document.addEventListener('click', unlockAudioOnFirstInteraction, { once: true }
 document.addEventListener('touchstart', unlockAudioOnFirstInteraction, { once: true });
 document.addEventListener('keydown', unlockAudioOnFirstInteraction, { once: true });
 
+// Har soniyada ishlaydigan taymer
 updateCountdown();
 const countdownTimer = setInterval(() => {
   updateCountdown();
-  if (!unlocked) playTick();
-  if (unlocked) clearInterval(countdownTimer);
+  if (!unlocked) {
+    playTick();
+  }
 }, 1000);
 
 /* -------------------------------------------------------
-   1.5) MUSIQANI ASTA PASAYTIRIB/KO'TARIB ALMASHTIRISH (fade)
+   1.5) AUDIO FADE EFFECT
    ------------------------------------------------------- */
 function fadeAudio(audio, targetVolume, duration = 800){
   const startVolume = audio.volume;
@@ -566,7 +522,7 @@ soundBtn.addEventListener('click', () => {
   if (targetAudio.paused){
     targetAudio.volume = 0;
     targetAudio.play().then(() => fadeAudio(targetAudio, 0.5)).catch(() => {
-      console.log('Audio ijro etilmadi — fayl manzilini tekshiring.');
+      console.log('Audio ijro etilmadi.');
     });
     soundBtn.textContent = '♪ Yoqilgan';
     soundBtn.classList.add('playing');
@@ -578,7 +534,7 @@ soundBtn.addEventListener('click', () => {
 });
 
 /* -------------------------------------------------------
-   2) KONFETTI — oltin/kumush/oq ranglarda, umumiy uslubga mos
+   2) KONFETTI
    ------------------------------------------------------- */
 function launchConfetti(){
   const colors = ['#d8b877', '#b9bcc7', '#f0eee9'];
@@ -597,7 +553,7 @@ function launchConfetti(){
 }
 
 /* -------------------------------------------------------
-   3) QUTI BOSILGANDA NIMA BO'LISHI KERAKLIGI
+   3) QUTI BOSILGANDA
    ------------------------------------------------------- */
 function handleGiftClick(){
   if (!unlocked){
@@ -619,9 +575,7 @@ function handleGiftClick(){
   }
 
   bgMusic.volume = 0;
-  bgMusic.play().then(() => fadeAudio(bgMusic, 0.5)).catch(() => {
-    console.log('Musiqani ijro etish uchun brauzer foydalanuvchi amalini kutayotgan bo\'lishi mumkin.');
-  });
+  bgMusic.play().then(() => fadeAudio(bgMusic, 0.5)).catch(() => {});
   soundBtn.textContent = '♪ Yoqilgan';
   soundBtn.classList.add('playing');
 
@@ -636,7 +590,7 @@ giftBox.addEventListener('keydown', (e) => {
 });
 
 /* -------------------------------------------------------
-   4) TUNGI OSMONDAGI YULDUZLARNI DASTURIY YARATISH
+   4) YULDUZLAR GENERATSIYASI
    ------------------------------------------------------- */
 const sky = document.getElementById('sky');
 const STAR_COUNT = 60;
